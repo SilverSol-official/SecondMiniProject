@@ -1,0 +1,16 @@
+body{
+    background-color: #670faf;
+}
+.logo{
+    position: absolute;
+    left: 50%;
+    top: 25%;
+    transform: translate(-50%, -50%);
+}
+button{
+    width:20%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
