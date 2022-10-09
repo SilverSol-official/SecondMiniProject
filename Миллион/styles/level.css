@@ -14,7 +14,7 @@ body{
 }
 .trow{
     border:2px solid black;
-    
+    border-radius: 15px;
 
 }
 .btn-succes{
@@ -26,6 +26,7 @@ body{
     background-color: aliceblue;
     border-radius: 15px;
     padding-left: 2%;
+    font-size: large;
 }
 .p-A{
     width:100%;
@@ -58,11 +59,12 @@ body{
 @media(max-width:680px){
     img{
         margin-left: 30%;
-        width: 200px;
-        height:200px;
+        width: 150px;
+        height:150px;
     }
     .question-container{
         margin-top: 3%;
+        font-size: small;
     }
     .trow{
         font-size: xx-small;
@@ -70,11 +72,12 @@ body{
     .score-count{
         width:100%;
         border-radius: 30px;
-        margin-top: 50px;
+        margin-top: 20px;
     }
     .help-button{
         width:100%;
         border-radius: 30px;
         margin-top: 10px;
+        margin-bottom: 10px;
     }
 }
