@@ -236,6 +236,13 @@ function prize(question){
     tableRows[question-1].style.background="yellow";
     if (question>1){
     tableRows[question-2].style.background="white";}
+    if ((question>5)&&(question<10)){
+        tableRows[4].style.background="lightgreen";
+    }
+    if (question>10){
+        tableRows[4].style.background="white";
+        tableRows[9].style.background="lightgreen";
+    }
 }
 function GoHome(){
     window.location.replace("index.html");
