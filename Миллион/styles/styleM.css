@@ -1,16 +1,33 @@
 body{
     background-color: #670faf;
 }
-.logo{
-    position: absolute;
-    left: 50%;
-    top: 25%;
-    transform: translate(-50%, -50%);
-}
 button{
-    width:20%;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    margin-top: 50px;
+    width: 30%;
+ }
+ .container{
+     width:60%;
+ }
+
+@media(max-width:680px){
+    button{
+        margin-top: 50px;
+        width: 30%;
+     }
+     .container{
+         width:90%;
+     }
+}
+@media(max-width:290px){
+    button{
+        margin-top: 50px;
+        width: 100%;
+     }
+     .container{
+         width:100%;
+     }
+     img{
+        width: 250px;
+
+     }
 }

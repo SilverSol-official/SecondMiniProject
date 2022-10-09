@@ -1,4 +1,4 @@
-alert("hello user");
+//alert("hello user");
 let questionsE=[{
     'question':"Какой продукт в разных странах называют папиной бородой и бабушкиными волосами?",
     'answerA':"A Сахарную вату",
@@ -14,15 +14,15 @@ let questionsE=[{
     'answerC':"C Вмазать",
     'answerD':"D Намазать",
     'right':"A",
-    'fifty':"AС",
+    'fifty':"AC",
 },{
     'question':"Как называется распространенная детская игра?",
-    'answerA':"А 'Пираты-разбойники'",
-    'answerB':"B 'Соловьи-разбойники'",
-    'answerC':"С 'Казаки-разбойники'",
-    'answerD':"D 'Орки-разбойники'",
-    'right':"С",
-    'fifty':"СB",
+    'answerA':"А Пираты-разбойники",
+    'answerB':"B Соловьи-разбойники",
+    'answerC':"С Казаки-разбойники",
+    'answerD':"D Орки-разбойники",
+    'right':"C",
+    'fifty':"CB",
 },{
     'question':"С какого тура, обычно начинаются выборы президента страны?",
     'answerA':"А С Премьерного",
@@ -135,7 +135,7 @@ let questionsH=[{
     'answerB':"B Кагор",
     'answerC':"С Марсала",
     'answerD':"D Херес",
-    'right':"AC",
+    'right':"A",
     "fifty":"AC",
 },{
     'question':"В каком городе в 1923 году был проведен первый международный кинофестиваль?",
@@ -162,12 +162,26 @@ let questionsH=[{
     'right':"C",
     'fifty':"CA",
 }];
+
+let prizes = [100,200,300,500,1000,2000,4000,8000,16000,32000,64000,125000,250000,500000,1000000];
 let questionField = document.querySelector('.question-container');
 let variantA = document.querySelector('.p-A');
 let variantB = document.querySelector('.p-B');
 let variantC = document.querySelector('.p-C');
 let variantD = document.querySelector('.p-D');
+let getPrize = document.querySelector('.score-count');
+let callButton = document.querySelector('.callButton');
+let fiftyButoon = document.querySelector('.fiftyButton');
+let tableRows = document.querySelectorAll('tr');
+let winString ;
+let loseSrting ;
 let questionNumber=1;
+let fiftyUsedWas=false;
+let callWasUsed=false;
+let temp = 0;
+let correct;
+let fiftyHelp;
+let prizeAmount=0;
 
 
 function AskEasy (){
@@ -177,6 +191,9 @@ function AskEasy (){
     variantB.textContent = questionsE[num]['answerB'];  
     variantC.textContent = questionsE[num]['answerC'];  
     variantD.textContent = questionsE[num]['answerD'];  
+    correct=questionsE[num]['right'];
+    fiftyHelp=questionsE[num]['fifty'];
+    questionsE.splice(num, 1); // deliting question
 }
 
 function AskMedium (){
@@ -186,6 +203,9 @@ function AskMedium (){
     variantB.textContent = questionsM[num]['answerB'];  
     variantC.textContent = questionsM[num]['answerC'];  
     variantD.textContent = questionsM[num]['answerD'];  
+    correct=questionsM[num]['right'];
+    fiftyHelp=questionsM[num]['fifty'];
+    questionsM.splice(num, 1); // deliting question
 }
 
 function AskHard (){
@@ -195,6 +215,9 @@ function AskHard (){
     variantB.textContent = questionsH[num]['answerB'];  
     variantC.textContent = questionsH[num]['answerC'];  
     variantD.textContent = questionsH[num]['answerD'];  
+    correct=questionsH[num]['right'];
+    fiftyHelp=questionsH[num]['fifty'];
+    questionsH.splice(num, 1); // deliting question
 }
 
 function ChooseQuestion(questionNum){
@@ -207,8 +230,124 @@ function ChooseQuestion(questionNum){
     }
 }
 
+function prize(question){
+    prizeAmount=prizes[question-1];
+    getPrize.textContent = `Забрать выигрыш: ${prizeAmount}$`;
+    tableRows[question-1].style.background="yellow";
+    if (question>1){
+    tableRows[question-2].style.background="white";}
+}
+function GoHome(){
+    window.location.replace("index.html");
+}
+function WinFunc(){
+        winString=`Поздравляем, Вы выиграли ${prizeAmount}$`;
+        document.querySelector('.win').innerHTML = winString;
+        $("#win-modal").modal('show');
+}
+function LoseFunc(){
+    if (prizeAmount<1000){
+        loseSrting = "К сожалению Вы ничего не выиграли";
+    }else if((prizeAmount>=1000)&&(prizeAmount<32000)){
+        loseSrting = `Игра окончена, но Вы выиграли 1000$`;
+    }else if(prizeAmount>=32000){
+        loseSrting = "Игра окончена, но Вы выиграли 32000$";
+    }
+    document.querySelector('.lose').innerHTML = loseSrting;
+    $("#lose-modal").modal('show');
+}
+function FiftyHelpFunc(){
+    if (fiftyUsedWas==false){
+        for (let i=0;i<2;i++){
+            if (fiftyHelp[i]=="A"){
+                variantA.style.backgroundColor="orange";
+                
+            }
+            if (fiftyHelp[i]=="B"){
+                variantB.style.backgroundColor="orange";
+                
+            }
+            if (fiftyHelp[i]=="C"){
+                variantC.style.backgroundColor="orange";
+               
+            }
+            if (fiftyHelp[i]=="D"){
+                variantD.style.backgroundColor="orange";
+                
+            }
+        }
+        document.querySelector('.fiftyButton').setAttribute("disabled", "");
+        fiftyUsedWas=true
+    }
+}
+function CallFriendHelp(){
+    if (callWasUsed==false){ 
+        let x = Math.random() * 10;
+    if (x > 4){
+        if (correct[0]=="A"){
+            variantA.style.backgroundColor="orange";
+            
+        }
+        if (correct[0]=="B"){
+            variantB.style.backgroundColor="orange";
+            
+        }
+        if (correct[0]=="C"){
+            variantC.style.backgroundColor="orange";
+           
+        }
+        if (correct[0]=="D"){
+            variantD.style.backgroundColor="orange";
+            
+        }
+        console.log(x);
+    }else {
+        let y = Math.floor(Math.random() * 4);
+        if(y==1){
+            variantA.style.backgroundColor="orange";
+        }
+        if(y==2){
+            variantB.style.backgroundColor="orange";
+        }
+        if(y==3){
+            variantC.style.backgroundColor="orange";  
+        }
+        if(y==4){
+            variantD.style.backgroundColor="orange";
+        }
+        console.log(y);
+            
+    }
+    
+    document.querySelector('.callButton').setAttribute("disabled", "");
+    callWasUsed=true;
+}
+}
+function GetPrizeButtonAction(){
+    WinFunc();
+}
 ChooseQuestion(questionNumber);
 
+function eventForAnswerButton (ans){
+    if ((fiftyUsedWas==true)||(callWasUsed==true))
+        {variantA.style.backgroundColor="#198754";
+        variantB.style.backgroundColor="#198754";  
+        variantC.style.backgroundColor="#198754";
+        variantD.style.backgroundColor="#198754";}
+    if (ans==correct){
+        prize(questionNumber);
+        if (questionNumber==15){
+            WinFunc();
+           
+        }else{
+        questionNumber++;
+        ChooseQuestion(questionNumber);}
+    }else{
+        LoseFunc();
+        
+    } 
+
+}
 
 
 // alert("Hello gamer");

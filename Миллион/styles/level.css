@@ -1,5 +1,5 @@
 body{
-    background-color: #670faf;
+    background-color: #6E15AB;
 }
 .logo{
     position: absolute;
@@ -16,9 +16,6 @@ body{
     border:2px solid black;
     
 
-}
-.container{
-    
 }
 .question-container{
     margin-top: 3%;
