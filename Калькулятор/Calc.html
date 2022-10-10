@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calc</title>
+    <link rel="Stylesheet" href="style/Stylesheet.css">
+   
+</head>
+<body>
+    <div class="calc">
+
+        <div class="calc-screen">
+
+           <p>0</p>
+
+        </div>
+
+        <div class="button">
+
+    <div class="btn ac bg-grey" onclick="clearAll()">AC</div>
+    <div class="btn plus-minus bg-grey" onclick="PlusMinus()">+/-</div>
+    <div class="btn percent bg-grey" onclick=" inputSign ('%')">%</div>
+    <div class="btn division bg-orange" onclick=" inputSign ('/')">/</div>
+
+    <div class="btn seven" onclick=" inputNumber ('7')">7</div>
+    <div class="btn eight" onclick=" inputNumber ('8')">8</div>
+    <div class="btn nine" onclick=" inputNumber ('9')">9</div>
+    <div class="btn multiply bg-orange" onclick=" inputSign ('X')">X</div>
+
+    <div class="btn four" onclick=" inputNumber ('4')">4</div>
+    <div class="btn five" onclick=" inputNumber ('5')">5</div>
+    <div class="btn six" onclick=" inputNumber ('6')">6</div>
+    <div class="btn minus bg-orange" onclick=" inputSign ('-')">-</div>
+
+    <div class="btn one" onclick=" inputNumber ('1')">1</div>
+    <div class="btn two" onclick=" inputNumber ('2')">2</div>
+    <div class="btn three" onclick=" inputNumber ('3')">3</div>
+    <div class="btn plus bg-orange" onclick=" inputSign ('+')">+</div>
+
+    <div class="btn zero" onclick=" inputNumber ('0')">0</div>
+    <div class="btn dot" onclick="inputNumber('.')">,</div>
+    <div class="btn equal bg-orange" onclick=" equalButton()">=</div>
+
+        </div>
+
+    </div>
+    <script src="script/Code.jss"></script>
+</body>
+</html>

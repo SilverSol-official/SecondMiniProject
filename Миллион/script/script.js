@@ -233,13 +233,16 @@ function ChooseQuestion(questionNum){
 function prize(question){
     prizeAmount=prizes[question-1];
     getPrize.textContent = `Забрать выигрыш: ${prizeAmount}$`;
-    tableRows[question-1].style.background="yellow";
-    if (question>1){
-    tableRows[question-2].style.background="white";}
-    if ((question>5)&&(question<10)){
+    if(question==15){
+        question = 14;
+    }
+    tableRows[question].style.background="yellow";
+    if (question>0){
+    tableRows[question-1].style.background="white";}
+    if ((question>4)&&(question<10)){
         tableRows[4].style.background="lightgreen";
     }
-    if (question>10){
+    if (question>9){
         tableRows[4].style.background="white";
         tableRows[9].style.background="lightgreen";
     }
@@ -357,59 +360,3 @@ function eventForAnswerButton (ans){
 }
 
 
-// alert("Hello gamer");
-// alert("if you need a help just type help in the answer field");
-// let bankOfQuestion=["   ","Какой головной убор был во время бала на Татьяне Лариной, героине романа «Евгений Онегин»? ","Какое астрономическое явление жители Земли могут наблюдать раз в 75–76 лет? А.Перевыборы в России В.ПРилет метеорита С.Появление кометы Галлея D.Падение атомной бомбы","В каком немецком городе родилась будущая императрица России Екатерина II: Цербсте или Штеттине? А.В Штеттине B.Цербсте","Название какого алкогольного напитка переводится с немецкого как «полынь»? A.Вермут B.Марихуана C.Одуванчик D.Репях"];
-// let bankOfAnswers=["B","C","A","A"];
-// let bAnkofHelps=["B,A","D,C","A,B","A,C"];
-// let sizeOfBank=5;
-// let pointCounter=0;
-// let questionNumber;
-// let answer;
-// let question;
-
-// function AskQuestion(){
-//     let number=Math.floor(Math.random() * sizeOfBank);
-//     return(number);
-// }
-// function Help(questionNumber){
-//     alert(bAnkofHelps[questionNumber]);
-//     pointCounter-=500;
-// }
-// for(let i=0;i<3;i++){
-//     questionNumber=AskQuestion(); // Randomize number of question
-//     question=bankOfQuestion[questionNumber]; //+1 showing question by it`s number
-//     answer=prompt(question);
-//     if (answer==bankOfAnswers[questionNumber]){ // Checking answer
-//         pointCounter+=1000; // adding money
-//         alert(`Great! Your score: ${pointCounter*10}$`); // showing balance
-//     }else if(answer=="help"){ // checking if help
-//         Help(questionNumber); // calling help function
-//         answer=prompt(bankOfQuestion[questionNumber]); // asking question number
-//         if (answer==bankOfAnswers[questionNumber]){ //once again checking question
-//             pointCounter+=1000; // adding money
-//             alert(`Great! Your score: ${pointCounter*100}$`); //showing money
-//         }else{alert("You lose"); // if lose
-//         pointCounter=0; // money = 0
-//         break;} //stopping game
-//     }else {alert("You lose"); // showing loose message
-//     pointCounter=0; // making 0 counter of points
-//     break;};
-//     bankOfQuestion.splice(questionNumber, 1); // deliting question
-//     bAnkofHelps.splice(questionNumber, 1); // deliting answer
-//     bankOfAnswers.splice(questionNumber,1); //delitiong help
-//     sizeOfBank--;
-// }
-// if (pointCounter!=0){
-//     alert(`Your score is ${pointCounter*10}$`); //if win show score
-// }
-
-// {
-//     'question':"question 1",
-//     'answerA':"A variant",
-//     'answerB':"B variant",
-//     'answerC':"C variant",
-//     'answerD':"D variant",
-//     'right':"A",
-//     'fifty':"AB",
-// },
