@@ -15,7 +15,7 @@ function clearAll() {
     b = '';
     sign = '';
     finish = false;
-    document.querySelector('p').innerHTML = "";
+    document.querySelector('p').innerHTML = "0";
     console.log("ad done");
     document.querySelector('p').style.fontSize = '4rem';
 }
