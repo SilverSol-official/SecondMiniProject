@@ -1,7 +1,5 @@
 let resultArr = [];
-let min = 0;
-let max = 0;
-let num = 1;
+
 let fair = true;
 
 function GenBtnClick(minNum, maxNum, numNum, fairGen, floatState) {
